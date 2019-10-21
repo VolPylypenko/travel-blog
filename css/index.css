@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+:root {
+  --accent-color: #50ada9;
+  --main-color: black;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat",sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  max-width: 980px;
+  margin: auto;
+  }
+
+.header {
+  height: 70px;
+  background: white;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.logo {
+  line-height: 70px;
+  float: left;
+  color: var(--accent-color);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 3rem;
+    
+}
+
+.menu {
+  float: right;
+  line-height: 70px;
+}
+
+.menu a {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 10px;
+  transition: 0.4s;
+}
+
+.show-menu-btn,.hide-menu-btn {
+  transition: 0.4s;
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  color: black;
+}
+
+.show-menu-btn {
+  float: right;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.show-menu-btn i {
+  line-height: 40px;
+}
+
+.menu a:hover,
+.show-menu-btn:hover,
+.hide-menu-btn:hover {
+  color: var(--accent-color);
+}
+
+#chk {
+  position: absolute;
+  visibility: hidden;
+  z-index: -1111;
+}
+
+@media screen and (max-width:800px) {
+  .show-menu-btn,.hide-menu-btn {
+      display: block;
+  }
+  .menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: silver;
+    right: -100%;
+    top: 0;
+    text-align: center;
+    padding: 70px 0;
+    line-height: 65px;
+    transition: 0.7s;
+  }
+  .menu a {
+    display: block;
+    padding: 20px;
+  }
+  .hide-menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  #chk:checked ~ .menu {
+    right: 0;
+  }
+}
+
+.banner {
+  background-image: url(../img/big-mountains.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: slide 20s infinite;
+}
+
+@keyframes slide {
+  25%{
+  background-image: url(../img/mountains-traveler.jpg);    
+  }
+  50%{
+  background-image: url(../img/mountains-forest.png);    
+  }
+  75%{
+  background-image: url(../img/mountains-winter.png);    
+  }
+  100%{
+  background-image: url(../img/big-mountains.png);    
+  }
+}
+
+.banner h1 {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.8rem;
+  color: var(--main-color);
+}
+
+article.posts img {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .blog-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  }
+}
+
+@media (min-width: 960px) {
+  .blog-list{    
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+article.posts h4 {
+  cursor: pointer;
+}
+
+#contacts, #folow-me, #blog {
+  padding: 10px 0;
+  margin: 19px 0;
+}
+
+form {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+    
+input,
+textarea {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 10px 5px;
+  background: white no-repeat;
+  background-image: linear-gradient(to bottom, var(--accent-color), var(--accent-color)), linear-gradient(to bottom, silver, silver);
+  background-size: 0 2px, 100% 1px;
+  background-position: 50% 100%, 50% 100%;
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+input:focus,
+textarea:focus{
+  background-size: 100% 2px, 100% 1px;
+  outline: none;
+}
+
+.follow {
+  text-align: center;
+}
+
+main .blog {
+  text-align: center;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+  
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+}
+      
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+      
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+      
+.modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+      
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+      
+.modal-body {
+  padding: 10px 15px;
+}
+      
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+      
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid silver;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.50em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  transition: all 0.3s;
+  background-color: #2c3e50;
+  margin: 5px auto;
+}
+
+.button:hover {
+  color: #000000;
+  background-color:var(--accent-color);
+  cursor: pointer;
+}
+
+.card-button {
+  border-color: black;
+  color: black;
+}
+
+.card-button:hover {
+  background-color: black;
+  color: var(--accent-color);
+}
+
+@media all and (max-width:30em) {
+  .button {
+    margin: 0.4em auto;
+  }
+}
+
+.social-buttons {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 10px 0;
+}
+
+.social-buttons a {
+  text-decoration: none;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  background: #2c3e50;
+  color: white;
+  margin: 0 6px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  font-size: 18px;
+}
+
+.social-buttons a i {
+  transition: 0.4s all;
+}
+
+.social-buttons a:hover {
+  background: var(--accent-color);
+}
+
+.social-buttons a:hover > i {
+  transform: scale(1.6) rotate(25deg);
+}
